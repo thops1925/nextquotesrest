@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { postItem } from '../../redux/postslice';
+import FileBase64 from 'react-file-base64';
 
 function Form() {
   const [value, setValue] = useState({
@@ -8,12 +9,20 @@ function Form() {
     title: '',
     message: '',
     tags: '',
+    selectedFile: '',
   });
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(postItem(value));
+    setValue({
+      creator: '',
+      title: '',
+      message: '',
+      tags: '',
+      selectedFile: '',
+    });
   };
   console.log(value);
   return (
@@ -56,6 +65,15 @@ function Form() {
           onChange={(e) => setValue({ ...value, tags: e.target.value })}
           value={value.tags}
         />
+        <div>
+          <FileBase64
+            type="file"
+            multiple={false}
+            onDone={({ base64 }) =>
+              setValue({ ...value, selectedFile: base64 })
+            }
+          />
+        </div>
         <button type="submit" className="bg-blue-600 rounded-sm h-12">
           submit
         </button>

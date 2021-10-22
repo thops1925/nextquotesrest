@@ -6,10 +6,11 @@ function SinglePost({ item, id }) {
     dispatch(deleteTodo({ id: id }));
   };
   return (
-    <div className="text-center  mt-8 bg-red-200">
+    <div className="text-center  mt-8 bg-red-200" key={id}>
       <p className="h-12">{item.creator}</p>
       <p className="h-12">{item.title}</p>
       <p className="h-12">{item.message}</p>
+      <img src={item.selectedFile} />
       <p className="h-12">{item.tags}</p>
       <button
         onClick={removeTodo}
