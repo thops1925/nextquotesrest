@@ -10,10 +10,11 @@ function PostList() {
   useEffect(() => {
     dispatch(getTodos());
   }, [dispatch]);
+
   return (
     <div className="w-1/4 h-2/3">
       {list.map((item) => (
-        <SinglePost item={item} id={item.id} />
+        <SinglePost item={item} />
       ))}
       <br />
     </div>

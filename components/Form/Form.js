@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { postItem } from '../../redux/postslice';
+import { addApi } from '../../redux/postslice';
 import FileBase64 from 'react-file-base64';
 
 function Form() {
@@ -15,7 +15,7 @@ function Form() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(postItem(value));
+    dispatch(addApi(value));
     setValue({
       creator: '',
       title: '',

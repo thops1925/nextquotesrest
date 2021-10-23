@@ -1,16 +1,17 @@
 import { useDispatch } from 'react-redux';
 import { deleteTodo } from '../../../redux/postslice';
-function SinglePost({ item, id }) {
+
+function SinglePost({ item }) {
   const dispatch = useDispatch();
   const removeTodo = () => {
-    dispatch(deleteTodo({ id: id }));
+    dispatch(deleteTodo({ id: item.id }));
   };
   return (
-    <div className="text-center  mt-8 bg-red-200" key={id}>
+    <div className="text-center  mt-8 bg-red-200" key={item.id}>
       <p className="h-12">{item.creator}</p>
       <p className="h-12">{item.title}</p>
       <p className="h-12">{item.message}</p>
-      <img src={item.selectedFile} />
+      <img src={item.selectedFile} className="object-cover" />
       <p className="h-12">{item.tags}</p>
       <button
         onClick={removeTodo}
